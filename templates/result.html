@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Decision Analysis - AI Decision Helper{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="mb-4">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                ← Back
+            </a>
+            <a href="{{ url_for('new_decision') }}" class="btn btn-primary ms-2">
+                Make Another Decision
+            </a>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h4 class="mb-0">
+                    📝 Your Decision
+                </h4>
+            </div>
+            <div class="card-body">
+                <p class="lead">{{ decision }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    🤖 What the AI thinks
+                </h4>
+            </div>
+            <div class="card-body">
+                <div id="analysisContent">
+                    {{ analysis|safe }}
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="text-muted">
+                💡 Remember: This is just to help you think. You still have to make the final choice!
+            </p>
+        </div>
+        
+        <!-- Auto-save decision to Firebase -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for Firebase auth to be ready
+            if (window.firebase && window.firebase.auth) {
+                window.firebase.onAuthStateChanged(window.firebase.auth, (user) => {
+                    if (user) {
+                        console.log('User is authenticated, saving decision...');
+                        const decision = {{ decision|tojson }};
+                        const analysis = {{ analysis|tojson }};
+                        saveDecisionToFirebase(decision, analysis);
+                    } else {
+                        console.log('User not authenticated on result page');
+                    }
+                });
+            }
+            
+            // Format the analysis content
+            const analysisContainer = document.getElementById('analysisContent');
+            if (analysisContainer && typeof formatAnalysisContent === 'function') {
+                formatAnalysisContent(analysisContainer);
+            }
+            
+            if (window.firebase && window.firebase.auth) {
+                window.firebase.onAuthStateChanged(window.firebase.auth, (user) => {
+                    if (user && decision && analysis) {
+                        saveDecisionToFirebase(decision, analysis);
+                    }
+                });
+            }
+        });
+        </script>
+    </div>
+</div>
+{% endblock %}

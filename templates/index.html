@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="text-center mb-4">
+            <h1 class="mb-3">
+                🤖 AI Decision Helper
+            </h1>
+            <p class="text-muted">
+                Need help deciding something? Ask the AI!
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    What do you need help deciding?
+                </h4>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('analyze_decision') }}" method="POST" id="decisionForm">
+                    <div class="mb-3">
+                        <label for="decision" class="form-label">
+                            Tell me about your decision:
+                        </label>
+                        <textarea 
+                            class="form-control" 
+                            id="decision" 
+                            name="decision" 
+                            rows="5" 
+                            placeholder="Example: Should I take AP Chemistry next year? I'm good at science but I heard it's really hard and might hurt my GPA..."
+                            required
+                            minlength="10"
+                        ></textarea>
+                        <small class="text-muted">Give me some details so I can help better!</small>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" id="analyzeBtn">
+                            <span class="btn-text">
+                                Get Help Deciding! 🚀
+                            </span>
+                            <span class="btn-loading d-none">
+                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                Thinking...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <h5>👍 Pros</h5>
+                    <p class="text-muted">Good things about your choice</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <h5>👎 Cons</h5>
+                    <p class="text-muted">Bad things to think about</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <h5>💡 Questions</h5>
+                    <p class="text-muted">Things to ask yourself</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
