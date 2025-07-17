@@ -1,0 +1,292 @@
+/* Custom styles for the AI Decision Helper */
+
+/* Ensure proper spacing and readability */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme overrides */
+[data-bs-theme="light"] {
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #212529;
+    --bs-border-color: #dee2e6;
+}
+
+[data-bs-theme="light"] .navbar-dark {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+[data-bs-theme="light"] .navbar-dark .navbar-brand,
+[data-bs-theme="light"] .navbar-dark .nav-link {
+    color: #212529 !important;
+}
+
+[data-bs-theme="light"] .navbar-dark .navbar-toggler {
+    border-color: #212529;
+}
+
+[data-bs-theme="light"] .navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme="light"] .bg-dark {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+[data-bs-theme="light"] .card-header.bg-dark {
+    background-color: #e9ecef !important;
+    color: #212529 !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+[data-bs-theme="light"] .card-header.bg-primary {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+[data-bs-theme="light"] .text-white {
+    color: #212529 !important;
+}
+
+[data-bs-theme="light"] .text-muted {
+    color: #6c757d !important;
+}
+
+[data-bs-theme="light"] .card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    color: #212529;
+}
+
+[data-bs-theme="light"] .btn-outline-light {
+    color: #212529;
+    border-color: #212529;
+}
+
+[data-bs-theme="light"] .btn-outline-light:hover {
+    background-color: #212529;
+    border-color: #212529;
+    color: #ffffff;
+}
+
+[data-bs-theme="light"] footer {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Enhanced card styling */
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Better form styling */
+.form-control {
+    border-radius: 8px;
+    border: 2px solid var(--bs-border-color);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Button enhancements */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-lg {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+}
+
+/* Loading state for buttons */
+.btn-loading {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Analysis content formatting */
+#analysisContent {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+#analysisContent h1,
+#analysisContent h2,
+#analysisContent h3,
+#analysisContent h4,
+#analysisContent h5,
+#analysisContent h6 {
+    color: var(--bs-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+#analysisContent p {
+    margin-bottom: 1.2rem;
+}
+
+#analysisContent ul,
+#analysisContent ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+#analysisContent li {
+    margin-bottom: 0.5rem;
+}
+
+/* Enhanced styling for AI response sections */
+.analysis-section {
+    background: linear-gradient(135deg, var(--bs-body-bg) 0%, rgba(var(--bs-primary-rgb), 0.05) 100%);
+    border: 1px solid var(--bs-border-color);
+    border-left: 4px solid var(--bs-primary);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analysis-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.analysis-section.pros-section {
+    border-left-color: var(--bs-success);
+    background: linear-gradient(135deg, var(--bs-body-bg) 0%, rgba(var(--bs-success-rgb), 0.05) 100%);
+}
+
+.analysis-section.cons-section {
+    border-left-color: var(--bs-warning);
+    background: linear-gradient(135deg, var(--bs-body-bg) 0%, rgba(var(--bs-warning-rgb), 0.05) 100%);
+}
+
+.analysis-section.considerations-section {
+    border-left-color: var(--bs-info);
+    background: linear-gradient(135deg, var(--bs-body-bg) 0%, rgba(var(--bs-info-rgb), 0.05) 100%);
+}
+
+.analysis-section.question-section {
+    border-left-color: var(--bs-primary);
+    background: linear-gradient(135deg, var(--bs-body-bg) 0%, rgba(var(--bs-primary-rgb), 0.05) 100%);
+}
+
+.analysis-section h4 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.analysis-section h4 i {
+    font-size: 1.1em;
+}
+
+/* Light theme adjustments for analysis sections */
+[data-bs-theme="light"] .analysis-section {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(13, 110, 253, 0.03) 100%);
+    border-color: #dee2e6;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="light"] .analysis-section:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="light"] .analysis-section.pros-section {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(25, 135, 84, 0.03) 100%);
+}
+
+[data-bs-theme="light"] .analysis-section.cons-section {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 193, 7, 0.03) 100%);
+}
+
+[data-bs-theme="light"] .analysis-section.considerations-section {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(13, 202, 240, 0.03) 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Enhanced alert styling */
+.alert {
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus indicators for accessibility */
+.btn:focus,
+.form-control:focus,
+.nav-link:focus {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+/* Animation for page transitions */
+main {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fix placeholder text color in light mode */
+[data-bs-theme="light"] .form-control::placeholder {
+    color: #6c757d !important;
+    opacity: 1;
+}
+
+[data-bs-theme="light"] .form-control:focus::placeholder {
+    color: #adb5bd !important;
+}
